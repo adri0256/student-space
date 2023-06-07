@@ -16,6 +16,6 @@ userApiRouter
     .route("/:id")
     .get(getUser)
     .put(updateUser)
-    .delete(verifyRoles(ROLES_LIST.Admin), deleteUser);
+    .delete(verifyRoles([ROLES_LIST.Admin]), deleteUser);
 
 export default userApiRouter;

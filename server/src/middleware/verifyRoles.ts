@@ -1,13 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 
-interface RequestWithUser extends Request {
-    user: string;
-    roles: string[];
-}
-
 const verifyRoles = (...allowedRoles: any[]) => {
-    return (req: any, res: any, next: NextFunction) => {
-        if (!req?.roles) return res.sendStatus(401);
+    return (req: any, res: Response, next: NextFunction) => {
+        if (!req.roles) return res.sendStatus(401);
 
         const rolesArray = [...allowedRoles];
         const result = req.roles
